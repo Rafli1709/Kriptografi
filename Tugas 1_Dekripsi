@@ -26,7 +26,7 @@ def decrypt(plaintext, ciphertext):
         Fin.close()
         Fout.close()
 
-print("Program Encryp XOR")
+print("Program Decryp XOR")
 plain = input("Masukkan Nama Berkas yang Akan di Dekripsi : ")
 cipher = input("Masukkan Nama Berkas Hasil Dekripsi : ")
 plaintext = plain + ".txt"
