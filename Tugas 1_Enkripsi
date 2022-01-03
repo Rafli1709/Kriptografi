@@ -1,0 +1,34 @@
+import sys
+
+def encrypt(plaintext, ciphertext):
+    Fin = open(plaintext, "rb")
+    Fin_readFile = bytearray(Fin.read())
+
+    if(Fin == None):
+        print("Berkas ", plaintext, " tidak ada")
+        sys.exit()
+
+    else :
+        Fout = open(ciphertext, "w+")
+        keys = input("Kata Kunci : ")
+        keys_array = [ord(x) for x in str(keys)] 
+        
+        print("Enkripsi ", plaintext, " menjadi ", ciphertext, "...")
+        
+        i = 0
+        for char in Fin_readFile:
+            key = keys_array[i]
+            xor = char ^ key
+            
+            Fout.write(chr(xor))        
+            i = (i + 1) % len(keys_array)
+
+        Fin.close()
+        Fout.close()
+
+print("Program Encryp XOR")
+plain = input("Masukkan Nama Berkas yang Akan di Enkripsi : ")
+cipher = input("Masukkan Nama Berkas Hasil Enkripsi : ")
+plaintext = plain + ".txt"
+ciphertext = cipher + ".txt"
+encrypt(plaintext, ciphertext)
